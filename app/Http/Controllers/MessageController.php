@@ -11,6 +11,12 @@ use App\Events\BroadcastChatEvent;
 
 class MessageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function new(Request $request)
     {
     	$msg = new Message; // instantiate new Model
@@ -39,8 +45,7 @@ class MessageController extends Controller
     public function markSeen($message_id){
     	return SeenmessagesUsers::where('message_id', $message_id )
                 ->update([
-                    'seen'=> true,
-                    'seen_at' =>now()
+                    'seen'=> true
                 ]);;
     }
 

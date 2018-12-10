@@ -11,11 +11,12 @@ use Auth;
 
 class FriendController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $users = Auth::user()->friends();
@@ -119,6 +120,7 @@ class FriendController extends Controller
     public function remove(Request $request)
     {
         $friend_id =  $request->input('user_id');
+        $user_id = Auth::user()->id;
         
         if (
             empty($friend_id) || 
@@ -130,8 +132,8 @@ class FriendController extends Controller
             return 0;
         }
 
-        Friend::where('user_id', $friend_id)->delete();
-        Friend::where('friend_id', $friend_id)->delete();
+        Friend::where('user_id', $friend_id)->where('friend_id', $user_id)->delete();
+        Friend::where('user_id', $user_id)->where('friend_id', $friend_id)->delete();
 
         return 1;
 

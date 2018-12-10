@@ -14081,9 +14081,9 @@ window.Popper = __webpack_require__(4).default;
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(5);
+    window.$ = window.jQuery = __webpack_require__(5);
 
-  __webpack_require__(17);
+    __webpack_require__(17);
 } catch (e) {}
 
 /**
@@ -14105,9 +14105,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -14121,10 +14121,10 @@ if (token) {
 window.Pusher = __webpack_require__(38);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
-  broadcaster: 'pusher',
-  key: 'cc8cad2012e60b0b69d3',
-  cluster: 'eu',
-  encrypted: true
+    broadcaster: 'pusher',
+    key: "cc8cad2012e60b0b69d3",
+    cluster: "eu",
+    encrypted: true
 });
 
 /***/ }),
@@ -57284,6 +57284,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['messages', 'newmessages', 'authors', 'userid', 'friendid', 'chatfriendson', 'chatfriends', 'chats', 'chat', 'onlineusers'],
@@ -57347,65 +57368,104 @@ var render = function() {
                 }
               }
             },
-            _vm._l(chatfriend, function(chatfriend) {
-              return _c("div", { staticStyle: { position: "relative" } }, [
-                _vm.newmessages.includes(_vm.chats[index].id)
-                  ? _c("span", { staticClass: "notification-alert" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(
-                            _vm.newmessages.filter(function(value) {
-                              return value === _vm.chats[index].id
-                            }).length
-                          ) +
-                          "\n          "
-                      )
+            [
+              _vm.chats[index].group_name
+                ? _c("div", { staticStyle: { position: "relative" } }, [
+                    _vm.newmessages.includes(_vm.chats[index].id)
+                      ? _c("span", { staticClass: "notification-alert" }, [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(
+                                _vm.newmessages.filter(function(value) {
+                                  return value === _vm.chats[index].id
+                                }).length
+                              ) +
+                              "\n          "
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        alt: _vm.chats[index].group_name,
+                        src: "/images/group_chat.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "about" }, [
+                      _c("div", { staticClass: "name" }, [
+                        _vm._v(_vm._s(_vm.chats[index].group_name))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "status" }, [
+                        _vm._v("Group Chat")
+                      ])
                     ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", [
-                  chatfriend.img
-                    ? _c("img", {
-                        attrs: {
-                          src: "",
-                          alt: chatfriend.name,
-                          src:
-                            "/images/profile_images/" +
-                            chatfriend.id +
-                            "/" +
-                            chatfriend.img
-                        }
-                      })
-                    : _c("img", {
-                        attrs: {
-                          src: "",
-                          alt: chatfriend.name,
-                          src: "/images/profile_images/no-profile-picture.jpg"
-                        }
-                      })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "about" }, [
-                  _c("div", { staticClass: "name" }, [
-                    _vm._v(_vm._s(chatfriend.name))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "status" },
-                    [
-                      _c("onlinestatus", {
-                        attrs: {
-                          onlineusers: _vm.onlineusers,
-                          userid: chatfriend.id
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ])
-              ])
-            })
+                  ])
+                : _vm._l(chatfriend, function(chatfriend) {
+                    return _c(
+                      "div",
+                      { staticStyle: { position: "relative" } },
+                      [
+                        _vm.newmessages.includes(_vm.chats[index].id)
+                          ? _c("span", { staticClass: "notification-alert" }, [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(
+                                    _vm.newmessages.filter(function(value) {
+                                      return value === _vm.chats[index].id
+                                    }).length
+                                  ) +
+                                  "\n          "
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("div", [
+                          chatfriend.img
+                            ? _c("img", {
+                                attrs: {
+                                  alt: chatfriend.name,
+                                  src:
+                                    "/images/profile_images/" +
+                                    chatfriend.id +
+                                    "/" +
+                                    chatfriend.img
+                                }
+                              })
+                            : _c("img", {
+                                attrs: {
+                                  alt: chatfriend.name,
+                                  src:
+                                    "/images/profile_images/no-profile-picture.jpg"
+                                }
+                              })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "about" }, [
+                          _c("div", { staticClass: "name" }, [
+                            _vm._v(_vm._s(chatfriend.name))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "status" },
+                            [
+                              _c("onlinestatus", {
+                                attrs: {
+                                  onlineusers: _vm.onlineusers,
+                                  userid: chatfriend.id
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  })
+            ],
+            2
           )
         })
       )
@@ -57416,63 +57476,92 @@ var render = function() {
         _c(
           "div",
           { staticClass: "chat-header clearfix" },
-          _vm._l(_vm.chatfriendson, function(chatWith) {
-            return _c(
-              "div",
-              {
-                staticStyle: { display: "inline-block", "margin-right": "20px" }
-              },
-              [
-                chatWith.img
-                  ? _c("img", {
-                      attrs: {
-                        src: "",
-                        alt: chatWith.name,
-                        src:
-                          "/images/profile_images/" +
-                          chatWith.id +
-                          "/" +
-                          chatWith.img
-                      }
-                    })
-                  : _c("img", {
-                      attrs: {
-                        src: "",
-                        alt: chatWith.name,
-                        src: "/images/profile_images/no-profile-picture.jpg"
-                      }
-                    }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "chat-about" },
+          [
+            _vm._l(_vm.chatfriendson, function(chatWith) {
+              return _c(
+                "div",
+                {
+                  staticStyle: {
+                    display: "inline-block",
+                    "margin-right": "20px"
+                  }
+                },
+                [
+                  chatWith.img
+                    ? _c("img", {
+                        attrs: {
+                          src: "",
+                          alt: chatWith.name,
+                          src:
+                            "/images/profile_images/" +
+                            chatWith.id +
+                            "/" +
+                            chatWith.img
+                        }
+                      })
+                    : _c("img", {
+                        attrs: {
+                          src: "",
+                          alt: chatWith.name,
+                          src: "/images/profile_images/no-profile-picture.jpg"
+                        }
+                      }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "chat-about" },
+                    [
+                      _c("div", { staticClass: "chat-with" }, [
+                        _vm._v("Chat with "),
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              title: "see " + chatWith.name + "'s profile",
+                              href: "/profile/" + chatWith.id
+                            }
+                          },
+                          [_vm._v(_vm._s(chatWith.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("onlinestatus", {
+                        attrs: {
+                          onlineusers: _vm.onlineusers,
+                          userid: chatWith.id
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm.chat.group_name
+              ? _c(
+                  "p",
+                  {
+                    staticStyle: {
+                      "text-align": "center",
+                      "font-size": "20px",
+                      "font-weight": "bold",
+                      "margin-top": "30px"
+                    }
+                  },
                   [
-                    _c("div", { staticClass: "chat-with" }, [
-                      _vm._v("Chat with "),
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            title: "see " + chatWith.name + "'s profile",
-                            href: "/profile/" + chatWith.id
-                          }
-                        },
-                        [_vm._v(_vm._s(chatWith.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("onlinestatus", {
-                      attrs: {
-                        onlineusers: _vm.onlineusers,
-                        userid: chatWith.id
-                      }
-                    })
-                  ],
-                  1
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "", onclick: "event.preventDefault()" }
+                      },
+                      [_vm._v("Add members to chat")]
+                    )
+                  ]
                 )
-              ]
-            )
-          })
+              : _vm._e()
+          ],
+          2
         ),
         _vm._v(" "),
         _c(

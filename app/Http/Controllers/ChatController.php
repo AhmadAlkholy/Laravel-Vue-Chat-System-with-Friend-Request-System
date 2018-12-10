@@ -12,28 +12,31 @@ use App\SeenmessagesUsers;
 class ChatController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     private function markMsgSeen($chat){
         if (count($chat->chatUnseenMessages)>0) {
             SeenmessagesUsers::whereIn('id', $chat->chatUnseenMessages->pluck('id') )
                 ->update([
-                    'seen'=> true,
-                    'seen_at' =>now()
+                    'seen'=> true
                 ]);
         }
     }
 
-    public function chat($chat_id=null, Request $request)
+    public function chat($chat_id=null)
     {      
 
         $user = Auth::user();
         $chats = $user->chat;
         $chat = (is_null($chat_id)) ?$chats->first() :$chats->find($chat_id);
         
-        if ( empty($chat) && is_null($chat_id)) return 'you have no messages yet';
+        if ( empty($chat) && is_null($chat_id)) return view( 'chat.empty' );
         
         if ( empty($chat) && !is_null($chat_id) ) return redirect('404');
 
-    	// $messages = ( !empty($chat->messages) ) ? $chat->messages : [];
         $chat_with = $chat->user->where('id', '!=', Auth::user()->id);
 
         $chatFriends = [];
@@ -45,9 +48,7 @@ class ChatController extends Controller
 
         $this->markMsgSeen($chat);
 
-        $page = ( $request->input('request') ) ?'chat.messages' : 'chat.chat';
-
-    	return view( $page, compact( 'chats', 'chat','user', 'chat_with','chatFriends' ) );
+    	return view( 'chat.chat', compact( 'chats', 'chat','user', 'chat_with','chatFriends' ) );
     }
 
     public function chatUser($user_id)

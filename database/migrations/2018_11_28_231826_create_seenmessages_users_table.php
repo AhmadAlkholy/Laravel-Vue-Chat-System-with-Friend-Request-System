@@ -19,7 +19,6 @@ class CreateSeenmessagesUsersTable extends Migration
             $table->integer('message_id');
             $table->integer('user_id');
             $table->boolean('seen')->default(0);
-            $table->timestamp('seen_at')->nullable();
             $table->timestamps();
         });
     }

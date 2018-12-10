@@ -163,13 +163,13 @@ body {
   left: 93%;
 }
 .chat .chat-message {
-  padding: 30px;
+  padding: 15px 30px;
   position:fixed;
   bottom:0;
   right:0;
   width:80%;
   background:#F2F5F8;
-  height:20vh;
+  height:17vh;
   border-top:2px solid #fff;
 }
 

@@ -18,27 +18,24 @@
   
 @section('content')
 
-            <chat 
-              v-bind:messages="messages" 
-              v-bind:newmessages="newMessages" 
-              v-bind:authors="authors" 
-              v-bind:userid="{{ Auth::user()->id }}"   
-              v-bind:friendid="{{ $chat->user->where('id', '!=', Auth::user()->id)->first()->id }}"
-              v-bind:chatfriendson="chatfriendson"
-              v-bind:chats="{{$chats}}" 
-              v-bind:chat="chat" 
-              v-bind:chatfriends="{{$chatFriends}}"
-              v-bind:onlineusers="onlineUsers"
+    <chat 
+      v-bind:messages="messages" 
+      v-bind:newmessages="newMessages" 
+      v-bind:authors="authors" 
+      v-bind:userid="{{ Auth::user()->id }}"   
+      v-bind:friendid="{{ $chat->user->where('id', '!=', Auth::user()->id)->first()->id }}"
+      v-bind:chatfriendson="chatfriendson"
+      v-bind:chats="{{$chats}}" 
+      v-bind:chat="chat" 
+      v-bind:chatfriends="{{$chatFriends}}"
+      v-bind:onlineusers="onlineUsers"
 
-              v-on:changemessages="messages = $event"
-              v-on:changenewmessages="newMessages = $event"
-              v-on:changeauthors="authors = $event"
-              v-on:changechatfriendson="chatfriendson = $event"
-              v-on:changechat="chat = $event"
-              v-on:changechatId="chatId = $event">
-            </chat>  
-    
-
- 
+      v-on:changemessages="messages = $event"
+      v-on:changenewmessages="newMessages = $event"
+      v-on:changeauthors="authors = $event"
+      v-on:changechatfriendson="chatfriendson = $event"
+      v-on:changechat="chat = $event"
+      v-on:changechatId="chatId = $event">
+    </chat>   
 
 @endsection

@@ -12,7 +12,24 @@
       
         <li v-for="(chatfriend, index) in chatfriends" v-on:click="getThread(chats[index].id)" :id="'thread'+chats[index].id" class="chathead clearfix" v-bind:class="(chat.id == chats[index].id) ?'active' :''">
 
-          <div v-for="chatfriend in chatfriend" style="position:relative">
+          <div v-if="chats[index].group_name" style="position:relative">
+
+            <span class="notification-alert" v-if="newmessages.includes(chats[index].id)">
+              {{newmessages.filter(function(value){
+                    return value === chats[index].id;
+                }).length  }}
+            </span>
+
+            <img :alt="chats[index].group_name" src="/images/group_chat.png"/>
+
+            <div class="about">
+              <div class="name">{{chats[index].group_name}}</div>
+              <div class="status">Group Chat</div>             
+            </div>
+            
+          </div>
+
+          <div v-else v-for="chatfriend in chatfriend" style="position:relative">
 
             <span class="notification-alert" v-if="newmessages.includes(chats[index].id)">
               {{newmessages.filter(function(value){
@@ -21,8 +38,8 @@
             </span>
             
             <div>
-              <img src=""  :alt="chatfriend.name" :src="'/images/profile_images/'+chatfriend.id+'/'+chatfriend.img"  v-if="chatfriend.img"/>
-              <img src=""  :alt="chatfriend.name" src="/images/profile_images/no-profile-picture.jpg"  v-else />
+              <img :alt="chatfriend.name" :src="'/images/profile_images/'+chatfriend.id+'/'+chatfriend.img"  v-if="chatfriend.img"/>
+              <img :alt="chatfriend.name" src="/images/profile_images/no-profile-picture.jpg"  v-else />
             </div>         
 
             <div class="about">
@@ -55,6 +72,9 @@
 
             </div>
           </div>
+
+          <p v-if="chat.group_name" style="text-align:center;font-size:20px;font-weight:bold;margin-top:30px;"><a href="" onclick="event.preventDefault()">Add members to chat</a></p>
+
       </div> <!-- end chat-header -->   
 
       <div class="chat-history" id="chat-history" style="overflow-y: scroll;">
@@ -102,6 +122,7 @@
   </div> <!-- end container -->
   
   </div> <!-- end container -->
+
 </template>
 
 <script>
